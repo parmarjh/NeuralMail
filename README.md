@@ -4,28 +4,52 @@ NeuralMail is a next-generation, premium universal email client designed for the
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ System Overview
 
-NeuralMail utilizes a modular, layer-separated architecture allowing rapid multi-agent collaboration with a decoupled frontend interface.
+NeuralMail is an AI-native email operating system combining:
+* 🧠 **AI-Powered Inbox Management** & prioritization
+* 🔍 **Semantic Email Search** (meaning-based retrieval)
+* ✍️ **Autonomous Drafting** (Smart suggested responses)
+* 📝 **Email Summarization** & estimated read-time calculation
+* 💾 **Persistent Context Memory** (User tone, style, calendar preferences)
+* 🤖 **Multi-Agent Orchestration** (Agent OS Framework)
+
+> **Core Vision**: *"Users should interact with intent, not interfaces."*
+
+---
+
+## 📐 Enterprise Architecture
+
+For the complete in-depth blueprint, please review the newly created [ARCHITECTURE.md](file:///c:/Users/parma/OneDrive/Desktop/TAJ%20ASLANI%20PUNE/ARCHITECTURE.md).
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                   Frontend (React PWA)                   │
-│   • Dark HSL Glassmorphism UI   • Offline Caching       │
-│   • Adaptive Compose Modal      • Live Agent Status Bar  │
-└──────────────────────────┬───────────────────────────────┘
-                           │  REST / Event Emitters
-┌──────────────────────────▼───────────────────────────────┐
-│              Multi-Agent Orchestrator (Agent OS)          │
-│   • Coordinates 6 Autonomous Pipeline Agents             │
-│   • Manages Event Hooks (beforeSend, afterFetch...)     │
-│   • Triggers Async Provider Plugins                      │
-└──────────────────────────┬───────────────────────────────┘
-                           │  Data Pipeline Flow
-┌──────────────────────────▼───────────────────────────────┐
-│                     Active Provider Plugins              │
-│   • Gmail OAuth2   • Office 365   • Yahoo IMAP   • AOL   │
-└──────────────────────────────────────────────────────────┘
+                   ┌────────────────────┐
+                   │    Frontend UI     │
+                   │ Next.js + React    │
+                   └─────────┬──────────┘
+                             │
+                    WebSocket / HTTP
+                             │
+         ┌───────────────────┴──────────────────┐
+         │                                      │
+ ┌───────▼────────┐                   ┌─────────▼─────────┐
+ │ AI Orchestrator│                   │ Authentication    │
+ │ Agent Runtime  │                   │ OAuth + Sessions  │
+ └───────┬────────┘                   └─────────┬─────────┘
+         │                                      │
+ ┌───────▼──────────────────────────────────────▼───────┐
+ │                 Backend API Layer                    │
+ │ Next.js API / FastAPI / Node Microservices           │
+ └───────┬──────────────────────────────────────────────┘
+         │
+ ┌───────▼──────────────────────────────────────────────┐
+ │                AI Intelligence Layer                 │
+ │ LLM Gateway + RAG + Memory + Tool Registry          │
+ └─────────┬────────────────────────────────────────────┘
+           ▼
+ ┌──────────────────────────────────────────────────────┐
+ │ Vector DB (pgvector) + PostgreSQL + Redis Cache     │
+ └──────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -109,13 +133,5 @@ To launch the client publicly on Vercel:
 
 ```powershell
 # Trigger our automated deploy pipeline batch script
-.\DEPLOY.bat
+.\VERCEL_DEPLOY.bat
 ```
-
----
-
-## 📝 Project Discipline (CLAUDE.md)
-Always follow the standards defined in `CLAUDE.md`:
-* **Types First**: Declare all model states in `src/types/index.ts` first.
-* **Pure Agents**: Keep agent functions side-effect-free (return `{ success, data, duration }`).
-* **Event Hooks**: Use Hooks (`beforeSend`, `afterFetch`) for logging and auditing.
