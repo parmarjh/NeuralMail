@@ -4,19 +4,21 @@ Based on premium live product inspirations from **NeuralMail** and modern AI-nat
 
 ---
 
-## 1. System Overview
+## 1. System Overview & Core References
 
-NeuralMail is an AI-first email operating system combining:
-* 🧠 **AI-Powered Inbox Management** & prioritization
-* 🔍 **Semantic Email Search** (meaning-based retrieval)
-* ✍️ **Autonomous Drafting** (Smart suggested responses)
-* 📝 **Email Summarization** & estimated read-time calculation
-* 💾 **Persistent Context Memory** (User tone, style, calendar preferences)
-* 🤖 **Multi-Agent Orchestration** (Agent OS Framework)
-* ⚙️ **Workflow Automation** (triggers, conditions, AI-decisions, actions)
-* 🎙️ **Natural Language Command Execution**
+NeuralMail is an AI-first email operating system combining AI-powered inbox management, semantic search, autonomous drafting, summarization, context memory, and workflow automation.
 
-> **Core Vision**: *"Users should interact with intent, not interfaces."*
+### 🌐 Core Product References & Inspirations
+* 🔗 **[NeuralMail Demo](https://neural-mail.vercel.app/)** – Main AI email assistant inspiration
+* 🔗 **[NeuralMail iOS App](https://apps.apple.com/)** – AI email mobile assistant App Store
+* 🔗 **[VectorMail](https://github.com/vectormail)** – AI semantic email infrastructure concepts
+* 🔗 **[NewMail AI](https://newmail.ai/)** – AI inbox assistant workflows
+* 🔗 **[Canary Mail AI](https://canarymail.io/)** – Multi-account AI email workflows & smart triage
+
+### ⚡ Vercel AI-Native Architecture References
+* 🔗 **[Vercel AI Chatbot Architecture](https://vercel.com/templates/next.js/nextjs-ai-chatbot)** – Streaming AI & Edge runtime architecture
+* 🔗 **[Vercel AI Features Guide](https://sdk.vercel.ai/docs)** – Secure AI infrastructure & tool-calling SDK
+* 🔗 **[Vercel Agents Platform](https://vercel.com/blog/agents)** – Agentic workflow & durable execution systems
 
 ---
 
@@ -60,112 +62,136 @@ NeuralMail is an AI-first email operating system combining:
 
 ---
 
-## 3. Core Architecture Layers
+## 3. Core Architecture Stack
 
-### A. Frontend Layer
-* **Tech Stack**: Next.js 16 App Router, React 19, TypeScript, TailwindCSS, shadcn/ui, Zustand, React Query, Framer Motion.
-* **Key Components**:
-  * `InboxView`: Decoupled email thread viewport rendering.
-  * `AIAssistantPanel`: Streamed copilot sidebar chat panel.
-  * `ComposeEditor`: Autocomplete smart email composer.
-  * `SearchInterface`: Semantic search controller with semantic-similarity ranking.
-
-### B. Backend API Layer
-* **Tech Stack**: Next.js API Routes / Node.js Express microservices, FastAPI (Python) for AI pipeline pipelines.
-* **Core Services**:
-  * **Auth Service**: OAuth2 + JWT tokens.
-  * **Sync Service**: High-speed incremental polling via Gmail/Outlook APIs.
-  * **AI Gateway**: Intelligent routing to Claude Sonnet / GPT-4o / Gemini Flash.
-  * **Vector Engine**: Embedding generator and vector search indexing.
+| Layer | Recommended Stack | Alternate / Dev Option |
+| :--- | :--- | :--- |
+| **Frontend** | Next.js 16 (App Router), React 19 | Vite + React + PWA (Standalone) |
+| **Styling & UI** | TailwindCSS, shadcn/ui, Framer Motion | Vanilla CSS, Framer Motion |
+| **State & Streaming** | Zustand, React Query, Vercel AI SDK | Context API |
+| **Backend API** | Next.js Route Handlers, Node.js, FastAPI | Express.js, Node.js |
+| **Queue & Realtime** | BullMQ, Kafka, WebSockets / SSE | Simple EventEmitter (In-memory) |
+| **AI SDK & RAG** | LangChain, LlamaIndex, Vercel AI Gateway | Raw OpenAI / Anthropic SDKs |
+| **LLM Models** | Claude 3.5 Sonnet, GPT-4o, Gemini Flash | Claude 3 Haiku, Llama 3 |
+| **Embeddings** | `text-embedding-3-large` | `BGE-small`, `InstructorXL` |
+| **Database** | PostgreSQL + `pgvector` | SQLite (Dev Mode) |
+| **Cache & Blob** | Redis, Vercel Blob / AWS S3 | Local storage / Memory cache |
 
 ---
 
-## 4. Multi-Agent Orchestration (Agent OS)
+## 4. Multi-Agent Registry (Agent OS)
 
 NeuralMail operates on an **Agentic Registry System** where specialized tasks are handed off dynamically to autonomous workers.
 
-```
-Incoming Email ──► [Inbox Agent] ──► [Prioritizer] ──► Unified Inbox
-                         │
-                         ├──► [Summarizer] ──► keyPoints & Sentiment
-                         │
-                         └──► [Compliance Agent] ──► Threat Scanners
-```
-
-### Registered Agents:
-* **Inbox Agent**: Runs triage and structural cataloging.
-* **Drafting Agent**: Auto-generates smart contextual reply templates.
-* **Search Agent**: Indexes contents for vector similarity retrieval.
-* **Calendar Agent**: Parses deadlines to manage dates and schedules.
-* **Compliance Agent**: Ensures prompt injection and phishing sanitization.
-
-### Active Tool Registry:
-* `send_email(to, subject, body)`
-* `summarize_thread(threadId)`
-* `semantic_search(query)`
-* `schedule_meeting(dateTime, duration)`
-* `archive_email(emailId)`
+### The 9-Agent Framework
+1. **Inbox Agent** – Evaluates priority, runs triage scoring & pins critical updates.
+2. **Drafting Agent** – Formulates contextual reply options matching user styles.
+3. **Search Agent** – Processes query indexing and vector similarity matching.
+4. **Workflow Agent** – Evaluates and executes user-defined trigger conditions.
+5. **Calendar Agent** – Inspects dates, parses scheduling intents, links calendar.
+6. **Memory Agent** – Logs personalization variables, styling, and tone patterns.
+7. **Security Agent** – Identifies phishing, filters prompt injection threats.
+8. **Research Agent** – Performs external web lookup to enrich thread contexts.
+9. **Voice Agent** – Translates speech-to-text for audio-driven action prompts.
 
 ---
 
-## 5. RAG & Semantic Search Architecture
+## 5. Skills, Hooks, and Plugin Ecosystems
+
+### Core Skills Registry
+* `summarize_thread` – Distill multi-thread conversations into single headlines.
+* `semantic_search` – Retrieve context through similarity index searches.
+* `reply_generation` – Formulate automated drafts matching distinct style templates.
+* `tone_rewrite` – Adapt existing drafts to Formal, Casual, or Brief tones.
+* `task_extraction` – Extract exact actionable bullet items and deadlines.
+* `phishing_detection` – Audit incoming senders and URLs for security threats.
+* `multilingual_translate` – Seamless real-time translation between global languages.
+* `workflow_planning` – Auto-configure pipeline actions based on intent.
+
+### Hook Event Registry
+* `on_email_received` – Fires sync updates and begins preprocessing triages.
+* `before_email_send` – Runs sanitizers and applies security audits before mail exit.
+* `after_llm_response` – Commits analytics and performance metrics to history.
+* `workflow_started` – Spawns worker jobs inside the scheduler pipeline.
+* `on_prompt_injection_detected` – Isolates threat sources and logs alarms.
+* `on_memory_update` – Updates long-term semantic preference profiles.
+
+### Plugin Integrations
+* **CRM Plugins** – Salesforce, HubSpot sync.
+* **Collaboration Plugins** – Slack alerts, Discord triggers.
+* **Productivity Plugins** – Notion databases, Jira issues creation.
+* **Meeting Plugins** – Zoom / MS Teams auto-scheduler links.
+* **Storage Plugins** – Google Drive & Dropbox attachment indexers.
+* **Calendar Plugins** – Google Calendar & Microsoft Outlook Calendar integration.
+
+---
+
+## 6. RAG & Semantic Search Pipeline
 
 Search operates semantically rather than relying on exact keyword matching.
 
 ```
-User Query ("investor meeting")
-       │
-       ▼
-[Embedding Model] ──► text-embedding-3-large
-       │
-       ▼
-[Vector Database] ──► Similarity Search (pgvector)
-       │
-       ▼
-[Hybrid BM25 + Re-ranking] ──► LLM Context Injection ──► Unified Results
+Email Thread ──► Chunking ──► Embedding Model ──► pgvector Store ──► Hybrid BM25 Retrieval ──► Context Injection ──► LLM Response
 ```
 
-### Memory Architecture:
-```json
-{
-  "tone_preference": "concise",
-  "signature_included": true,
-  "preferred_meeting_hours": "14:00-17:00",
-  "frequent_contacts": ["Sarah Chen", "Emily Watson"]
-}
-```
-* **Episodic**: Stores historical interaction patterns.
-* **Semantic**: Remembers context rules and writing preferences.
+* Community implementations strongly recommend **Vector Personalization** to ensure LLM drafts match the unique voice of the sender.
 
 ---
 
-## 6. Real-Time Email Synchronization Engine
-
-Uses secure OAuth login flow to handle rapid synchronization cycles.
+## 7. Recommended Directory Structure
 
 ```
-OAuth Login ──► Initial Sync ──► Delta Sync ──► Webhook Trigger ──► Incremental Updates
+/apps
+  /web                  # Next.js web application interface
+  /api                  # Node / Express / FastAPI endpoints
+  /worker               # Asynchronous queue workers
+
+/agents
+  /inbox-agent          # Inbox orchestration
+  /drafting-agent       # Auto-draft composer
+  /workflow-agent       # Automation executor
+
+/skills
+  /semantic-search      # Vector index tools
+  /summarization        # Text summarizers
+
+/plugins
+  /slack                # Slack connector
+  /notion               # Notion integration
+  /gmail                # Gmail API plugin
+
+/hooks
+  /email-hooks          # Event-driven receivers
+  /workflow-hooks       # Queue orchestrators
+
+/packages
+  /ui                   # Shared component libraries
+  /ai                   # LLM gateway helpers
+  /auth                 # Auth rules (OAuth)
+  /database             # DB adapters
 ```
-* Integrates with **Gmail Push Notifications** (Cloud Pub/Sub Webhooks) and **Microsoft Graph webhooks**.
-* Incremental sync fetches deltas using the history ID pipeline, making updates instant and serverless-friendly.
 
 ---
 
-## 7. Security Architecture
-* **OAuth2 Authentication**: Scoped API permissions.
-* **Data Protection**: Encrypted database indexes (AES-256) and TLS transit pipelines.
-* **AI Safety Boundary**: Prompt injection firewalls, complete email sanitization prior to LLM ingest, and **Human-in-the-loop validation** (Never auto-send emails without manual user confirmation).
+## 8. Deployment & Scaling Topology
 
----
+```
+                  Vercel Edge CDN
+                         │
+                ┌────────▼────────┐
+                │  API Gateway    │
+                └────────┬────────┘
+                         │
+        ┌────────────────▼────────────────┐
+        │  AI Orchestration Middleware    │
+        └────────────────┬────────────────┘
+                         │
+     ┌───────────────────▼──────────────────┐
+     │  Worker Queue (BullMQ / Kafka)       │
+     └───────────┬──────────────────┬───────┘
+                 ▼                  ▼
+        [LLM API Gateway]   [DB & pgvector Store]
+```
 
-## 8. Recommended Enterprise Tech Stack
-
-| Layer | Recommended Technology | Alternate |
-| :--- | :--- | :--- |
-| **Frontend** | Next.js + React | Vite + PWA (Standalone) |
-| **Backend** | Node.js + FastAPI | Go Microservices |
-| **LLM Models** | Anthropic Claude 3.5 Sonnet | OpenAI GPT-4o / Gemini Flash |
-| **Database** | PostgreSQL | SQLite (Dev) |
-| **Vector Index** | `pgvector` | Pinecone / Qdrant |
-| **Realtime Queue** | BullMQ | Apache Kafka |
-| **Hosting** | Vercel Edge CDN | Kubernetes / Railway |
+* **Horizontal Scaling**: Scales database sync tasks independently from expensive LLM gateways and vector embedding calculations.
+* **Durable Queues**: Employs in-memory/disk queues (BullMQ/Redis) to guarantee email webhook delivery and automatic retry options.
